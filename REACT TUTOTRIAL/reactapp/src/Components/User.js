@@ -33,15 +33,12 @@ import UserConsumer from '../context'
         dispatch ({type : "DELETE_USER",payload:id});
 
     }
-    // constructor(props)
-    // {
-    //     super(props);
-    //     this.onClickEvent = this.onClickEvent.bind(this); 
-    //     this.state=
-    //     {
-    //       isVisible : false
-    //     }
-    // }
+
+   componentWillUnmount()
+   {
+    console.log("Component Will Unmount");
+    
+   }
   render() {
 
     //Destructing
@@ -54,7 +51,7 @@ import UserConsumer from '../context'
             const {dispatch} = value;
             return (
                 <div className='col-md-8  mb-4'>
-                    <div className='card'>
+                    <div className='card' style={isVisible ? {backgroundColor:"#000000", color:"#ffffff"} : null}>
                         <div className='card-header d-flex justify-content-between' >
             
                         <h4 className='d-inline' onClick={this.onClickEvent} >{name}</h4>
@@ -87,7 +84,7 @@ User.propTypes =
 name:PropTypes.string.isRequired,
 salary: PropTypes.string.isRequired,
 departman : PropTypes.string.isRequired,
-id : PropTypes.number.isRequired
+id : PropTypes.string.isRequired
 
 }
 

@@ -1,0 +1,29 @@
+{
+    "users" : [
+
+        {
+            "id" :"uniq1",
+            "name" : "Burak Büyük",
+            "salary" : "14.000",
+            "departman" : "Yazilim"
+        
+        },
+        {
+          "id" :"uniq2",
+          "name ": "Gökçe Nur Büyük",
+          "salary" : "14.000",
+          "departman" : "Counting"
+        
+        },
+        {
+          "id" :"uniq3",
+          "name ": "Bilge Nur Büyük",
+          "salary" : "4.000",
+          "departman" : "Counting-Yazilim"
+        }
+
+
+    ]
+
+
+}

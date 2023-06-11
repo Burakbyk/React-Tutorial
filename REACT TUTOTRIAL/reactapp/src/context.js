@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { Component } from 'react'
+
 
 const UserContext = React.createContext();
 
@@ -12,6 +14,11 @@ const reducer = (state,action) =>
                 users: state.users.filter(user=> action.payload !== user.id)
 
             }
+        case "ADD_USER" :
+          return {
+            ...state,
+            users : [...state.users,action.payload]
+          }
             default :
             return state
     }
@@ -23,39 +30,21 @@ const reducer = (state,action) =>
 export  class UserProvider extends Component {
     state = {
 
-        users: [
-      
-          {
-              id :1,
-              name : "Burak Büyük",
-              salary : "14.000",
-              departman : "Yazilim"
-      
-      
-          },
-          {
-            id :2,
-            name : "Gökçe Nur Büyük",
-            salary : "14.000",
-            departman : "Counting"
-      
-      
-          },
-          {
-            id :3,
-            name : "Bilge Nur Büyük",
-            salary : "4.000",
-            departman : "Counting-Yazilim"
-          }
-      
-        ],
+        users: [],
         dispatch : action =>
         {
             this.setState(state => reducer(state,action))
-        }
+        }     
       
-     
-      
+      }
+      componentDidMount = async () => {
+
+        const response = await axios.get("http://localhost:3004/users")
+        
+        this.setState({
+          users: response.data
+        })
+        
       }
   render() {
     return (
